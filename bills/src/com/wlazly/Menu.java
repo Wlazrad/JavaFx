@@ -95,7 +95,7 @@ public class Menu extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setVisible(true);
-        frame.setSize(600,600);
+        frame.setSize(800,800);
     }
 
     public static void main(String[] args) {
