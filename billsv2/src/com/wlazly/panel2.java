@@ -88,6 +88,23 @@ public class panel2 extends JPanel {
                        Integer.parseInt(tnip.getText())));
 
                pickCustomer.setModel(DLM);
+               pickSalesman.setModel(DLM);
+
+            }
+        });
+        bdeleteCustomer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int i = pickCustomer.getSelectedIndex();
+                int j = pickSalesman.getSelectedIndex();
+
+                DLM.removeElementAt(i);
+                DLM.removeElementAt(j);
+            }
+        });
+        bnewBill.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         });

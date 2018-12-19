@@ -1,6 +1,8 @@
 package com.wlazly;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class panel3 extends JPanel{
     JLabel litem = new JLabel();
@@ -23,7 +25,7 @@ public class panel3 extends JPanel{
 
     JLabel lpickBill = new JLabel();
 
-    JTextPane tbill = new JTextPane();
+    JList tbill = new JList();
 
     public panel3(){
         setLayout(null);
@@ -56,6 +58,9 @@ public class panel3 extends JPanel{
         bclose.setBounds(200,600,100,30);
         tbill.setBounds(50,250,200,200);
 
+        cunit.addItem("szt");
+        cunit.addItem("kg");
+
 
         bdelete.setText("Delete");
 
@@ -79,6 +84,24 @@ public class panel3 extends JPanel{
         add(bopen);
         add(bclose);
 
+        DefaultListModel DLM = new DefaultListModel();
+        baddItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DLM.addElement(new Position(titem.getText(),
+                        Integer.parseInt(tprice.getText()),
+                        Integer.parseInt(tamount.getText()),
+                        (String) cunit.getSelectedItem(),
+                        Integer.parseInt(tvat.getText())));
+                tbill.setModel(DLM);
+            }
+        });
+        bdelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DLM.removeElement(tbill.getSelectedValue());
+            }
+        });
 
 
 
