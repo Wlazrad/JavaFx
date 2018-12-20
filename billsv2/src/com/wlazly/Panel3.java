@@ -29,7 +29,7 @@ public class Panel3 extends JPanel{
 
     JLabel lpickBill = new JLabel();
 
-   public static JList tbill = new JList();
+   public static JList<Bill> tbill = new JList<Bill>();
 
     public Panel3(){
         setLayout(null);
@@ -93,17 +93,12 @@ public class Panel3 extends JPanel{
         add(bclose);
 
         DefaultListModel DLM2 = new DefaultListModel();
-        baddItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DLM2.addElement(new Position(titem.getText(),
-                        tprice.getText(),
-                        tamount.getText(),
-                        (String) cunit.getSelectedItem(),
-                        tvat.getText()));
-                tbill.setModel(DLM2);
+       baddItem.addActionListener(new ActionListener() {
+           @Override
+          public void actionPerformed(ActionEvent e) {
+
             }
-        });
+       });
         bdelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +110,17 @@ public class Panel3 extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 card.show(container,"1");
+
+            }
+        });
+
+        bopen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Panel4.linfo11.setText(tbill.getSelectedValue().name1);
+                Panel4.linfo12.setText(tbill.getSelectedValue().data1);
+                Panel4.linfo13.setText(tbill.getSelectedValue().nip1);
+
 
             }
         });

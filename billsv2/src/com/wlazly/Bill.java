@@ -9,10 +9,13 @@ public class Bill {
     String name2;
     String data2;
     String nip2;
+
+    ArrayList<Position> billlist = new ArrayList<Position>();
+
     boolean close;
 
 
-    public Bill(String name1, String data1, String nip1, String name2, String data2, String nip2, boolean close) {
+    public Bill(String name1, String data1, String nip1, String name2, String data2, String nip2, boolean close,ArrayList<Position> billlist) {
         this.name1=name1;
         this.data1=data1;
         this.nip1=nip1;
@@ -20,7 +23,10 @@ public class Bill {
         this.data2=data2;
         this.nip2=nip2;
         this.close=close;
+        this.billlist=billlist;
+
     }
+
 
     public String getName1() {
         return name1;

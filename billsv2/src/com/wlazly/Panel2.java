@@ -3,6 +3,7 @@ package com.wlazly;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import static com.wlazly.Panel1.card;
 import static com.wlazly.Panel1.container;
@@ -130,11 +131,11 @@ public class Panel2 extends JPanel {
         bnewBill.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ArrayList<Position> menager= new ArrayList<>();
 
                 DLM1.addElement(new Bill(pickCustomer.getSelectedValue().getNazwa(),pickCustomer.getSelectedValue()
                 .getData(), pickCustomer.getSelectedValue().getNip(),pickSalesman.getSelectedValue().getNazwa(),
-                        pickSalesman.getSelectedValue().getData(), pickSalesman.getSelectedValue().getNip(),false));
+                        pickSalesman.getSelectedValue().getData(), pickSalesman.getSelectedValue().getNip(),false,menager));
 
                 Panel3.tbill.setModel(DLM1);
 
