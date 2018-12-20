@@ -2,12 +2,12 @@ package com.wlazly;
 
 public class Position {
     String nameposition;
-    int price;
-    int amount;
+    String price;
+    String amount;
     String units;
-    int vat;
-    public Position(String nameposition, int price, int amount,
-                    String units, int vat){
+    String vat;
+    public Position(String nameposition, String price, String amount,
+                    String units, String vat){
             this.nameposition = nameposition;
             this.price = price;
             this.amount = amount;

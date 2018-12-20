@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.PublicKey;
 
-public class panel1 extends JFrame {
+public class Panel1 extends JFrame {
 
     public static CardLayout card = new CardLayout();
     public static JPanel container = new JPanel();
@@ -19,7 +18,7 @@ public class panel1 extends JFrame {
     public static JButton bexit = new JButton();
 
 
-    public panel1(){
+    public Panel1(){
         container.setLayout(card);
         panel1.setLayout(null);
 
@@ -43,8 +42,9 @@ public class panel1 extends JFrame {
 
 
         container.add(panel1,"1");
-        container.add(new panel2(),"2");
-        container.add(new panel3(),"3");
+        container.add(new Panel2(),"2");
+        container.add(new Panel3(),"3");
+        container.add(new Panel4(),"4");
 
         card.show(container,"1");
 
@@ -64,6 +64,20 @@ public class panel1 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 card.show(container,"3");
+            }
+        });
+
+        baddBill.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.show(container,"4");
+            }
+        });
+
+        bexit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
 

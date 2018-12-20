@@ -4,30 +4,34 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class panel3 extends JPanel{
+import static com.wlazly.Panel1.card;
+import static com.wlazly.Panel1.container;
+
+public class Panel3 extends JPanel{
     JLabel litem = new JLabel();
     JLabel lprice = new JLabel();
     JLabel lamount = new JLabel();
     JLabel lunit = new JLabel();
     JLabel lvat = new JLabel();
 
-    JTextField titem = new JTextField();
-    JTextField tprice = new JTextField();
-    JTextField tamount = new JTextField();
-    JComboBox cunit = new JComboBox();
-    JTextField tvat = new JTextField();
+    public static JTextField titem = new JTextField();
+    public static JTextField tprice = new JTextField();
+    public static JTextField tamount = new JTextField();
+    public static JComboBox cunit = new JComboBox();
+    public static JTextField tvat = new JTextField();
 
-    JButton baddItem = new JButton();
+    public static JButton baddItem = new JButton();
     JButton bupdate = new JButton();
     JButton bdelete = new JButton();
     JButton bopen = new JButton();
     JButton bclose = new JButton();
+    JButton bback = new JButton();
 
     JLabel lpickBill = new JLabel();
 
-    JList tbill = new JList();
+   public static JList tbill = new JList();
 
-    public panel3(){
+    public Panel3(){
         setLayout(null);
         litem.setText("Item name");
         litem.setBounds(50,50,100,30);
@@ -56,6 +60,9 @@ public class panel3 extends JPanel{
         bopen.setBounds(50,600,100,30);
         bclose.setText("Close");
         bclose.setBounds(200,600,100,30);
+        bback.setText("Back");
+        bback.setBounds(650,700,100,30);
+
         tbill.setBounds(50,250,200,200);
 
         cunit.addItem("szt");
@@ -79,27 +86,36 @@ public class panel3 extends JPanel{
         add(baddItem);
         add(bupdate);
         add(bdelete);
+        add(bback);
         add(tbill);
 
         add(bopen);
         add(bclose);
 
-        DefaultListModel DLM = new DefaultListModel();
+        DefaultListModel DLM2 = new DefaultListModel();
         baddItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DLM.addElement(new Position(titem.getText(),
-                        Integer.parseInt(tprice.getText()),
-                        Integer.parseInt(tamount.getText()),
+                DLM2.addElement(new Position(titem.getText(),
+                        tprice.getText(),
+                        tamount.getText(),
                         (String) cunit.getSelectedItem(),
-                        Integer.parseInt(tvat.getText())));
-                tbill.setModel(DLM);
+                        tvat.getText()));
+                tbill.setModel(DLM2);
             }
         });
         bdelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DLM.removeElement(tbill.getSelectedValue());
+                DLM2.removeElement(tbill.getSelectedValue());
+            }
+        });
+
+        bback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.show(container,"1");
+
             }
         });
 

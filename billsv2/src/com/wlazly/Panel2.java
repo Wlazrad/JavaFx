@@ -3,9 +3,11 @@ package com.wlazly;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-public class panel2 extends JPanel {
+import static com.wlazly.Panel1.card;
+import static com.wlazly.Panel1.container;
+
+public class Panel2 extends JPanel {
     JLabel lcustomer = new JLabel();
     JLabel ldata = new JLabel();
     JLabel lnip = new JLabel();
@@ -17,9 +19,11 @@ public class panel2 extends JPanel {
     JButton bdeleteCustomer = new JButton();
     JButton bshowCustomer = new JButton();
     JButton bnewBill = new JButton();
+    JButton bback = new JButton();
 
-    JList pickCustomer = new JList();
-    JList pickSalesman = new JList();
+
+    JList<Obiekty> pickCustomer = new JList();
+    JList<Obiekty> pickSalesman = new JList();
 
     JTextField tcustomer = new JTextField();
     JTextField tdane = new JTextField();
@@ -29,7 +33,7 @@ public class panel2 extends JPanel {
 
 
 
-    public panel2(){
+    public Panel2(){
         setLayout(null);
         lcustomer.setText("Customer");
         lcustomer.setBounds(50,50,100,30);
@@ -50,6 +54,8 @@ public class panel2 extends JPanel {
         bshowCustomer.setBounds(200,150,100,30);
         bnewBill.setText("New Bill");
         bnewBill.setBounds(200,200,100,30);
+        bback.setText("Back");
+        bback.setBounds(650,700,100,30);
 
         lpickcustomer.setText("Pick Customer");
         lpickcustomer.setBounds(50,300,150,30);
@@ -73,6 +79,7 @@ public class panel2 extends JPanel {
         add(bdeleteCustomer);
         add(bshowCustomer);
         add(bnewBill);
+        add(bback);
 
         add(lpickcustomer);
         add(lpicksalesman);
@@ -83,15 +90,32 @@ public class panel2 extends JPanel {
         baddCustomer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                DLM.addElement(new Obiekty(tcustomer.getText(),
-                       Integer.parseInt(tdane.getText()),
-                       Integer.parseInt(tnip.getText())));
+                       tdane.getText(),
+                       tnip.getText()));
 
                pickCustomer.setModel(DLM);
                pickSalesman.setModel(DLM);
 
+
             }
         });
+
+        bshowCustomer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+               String str = pickCustomer.getSelectedValue().toString();
+                String[] arrOfStr = str.split(",",20);
+                tcustomer.setText(pickCustomer.getSelectedValue().getNazwa());
+                tdane.setText(pickCustomer.getSelectedValue().getData());
+                tnip.setText(pickCustomer.getSelectedValue().getNip());
+
+            }
+        });
+
+
         bdeleteCustomer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,9 +126,26 @@ public class panel2 extends JPanel {
                 DLM.removeElementAt(j);
             }
         });
+        DefaultListModel DLM1 = new DefaultListModel();
         bnewBill.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+                DLM1.addElement(new Bill(pickCustomer.getSelectedValue().getNazwa(),pickCustomer.getSelectedValue()
+                .getData(), pickCustomer.getSelectedValue().getNip(),pickSalesman.getSelectedValue().getNazwa(),
+                        pickSalesman.getSelectedValue().getData(), pickSalesman.getSelectedValue().getNip(),false));
+
+                Panel3.tbill.setModel(DLM1);
+
+
+            }
+        });
+
+        bback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.show(container,"1");
 
             }
         });
