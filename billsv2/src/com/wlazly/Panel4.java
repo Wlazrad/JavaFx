@@ -84,10 +84,7 @@ public class Panel4 extends JPanel {
 
         tpositions.setBounds(50,300,500,300);
 
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(colums);
-        tpositions.setModel(model);
-        tpositions.setRowHeight(30);
+
 
 
 
@@ -108,6 +105,7 @@ public class Panel4 extends JPanel {
         add(linfo13);
         add(linfo21);
         add(linfo22);
+        add(linfo23);
 
         add(bback);
 
@@ -121,19 +119,42 @@ public class Panel4 extends JPanel {
 
             }
         });
-            Object[] row = new Object[5];
-        Panel3.baddItem.addActionListener(new ActionListener() {
+
+        Panel3.bopen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                row[0]= Panel3.titem.getText();
-                row[1]= Panel3.tprice.getText();
-                row[2]= Panel3.tamount.getText();
-                row[3]= Panel3.cunit.getSelectedItem();
-                row[4]= Panel3.tvat.getText();
+                Panel4.linfo11.setText(Panel3.tbill.getSelectedValue().name1);
+                Panel4.linfo12.setText(Panel3.tbill.getSelectedValue().data1);
+                Panel4.linfo13.setText(Panel3.tbill.getSelectedValue().nip1);
 
-                model.addRow(row);
+                Panel4.linfo21.setText(Panel3.tbill.getSelectedValue().name2);
+                Panel4.linfo22.setText(Panel3.tbill.getSelectedValue().data2);
+                Panel4.linfo23.setText(Panel3.tbill.getSelectedValue().nip2);
+
+                DefaultTableModel model = new DefaultTableModel();
+                model.setColumnIdentifiers(colums);
+                tpositions.setModel(model);
+                tpositions.setRowHeight(30);
+
+
+                Object[] row =new Object[5];
+
+                for (int i = 0; i<Panel3.tbill.getSelectedValue().billlist.size();i++) {
+                    row[0] = Panel3.tbill.getSelectedValue().billlist.get(i).nameposition;
+                    row[1] = Panel3.tbill.getSelectedValue().billlist.get(i).price;
+                    row[2] = Panel3.tbill.getSelectedValue().billlist.get(i).amount;
+                    row[3] = Panel3.tbill.getSelectedValue().billlist.get(i).units;
+                    row[4] = Panel3.tbill.getSelectedValue().billlist.get(i).vat;
+
+                    model.addRow(row);
+
+                }
+
+
             }
         });
+
+
 
     }
 

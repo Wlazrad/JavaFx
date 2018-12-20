@@ -1,6 +1,7 @@
 package com.wlazly;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,7 +24,7 @@ public class Panel3 extends JPanel{
     public static JButton baddItem = new JButton();
     JButton bupdate = new JButton();
     JButton bdelete = new JButton();
-    JButton bopen = new JButton();
+    public static JButton bopen = new JButton();
     JButton bclose = new JButton();
     JButton bback = new JButton();
 
@@ -96,6 +97,9 @@ public class Panel3 extends JPanel{
        baddItem.addActionListener(new ActionListener() {
            @Override
           public void actionPerformed(ActionEvent e) {
+            tbill.getSelectedValue().billlist.add(new Position(titem.getText(),
+                    tprice.getText(), tamount.getText(), cunit.getSelectedItem().toString(), tvat.getText()));
+
 
             }
        });
@@ -114,16 +118,7 @@ public class Panel3 extends JPanel{
             }
         });
 
-        bopen.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Panel4.linfo11.setText(tbill.getSelectedValue().name1);
-                Panel4.linfo12.setText(tbill.getSelectedValue().data1);
-                Panel4.linfo13.setText(tbill.getSelectedValue().nip1);
 
-
-            }
-        });
 
 
 

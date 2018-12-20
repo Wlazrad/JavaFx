@@ -16,6 +16,46 @@ public class Position {
 
         }
 
+    public String getNameposition() {
+        return nameposition;
+    }
+
+    public void setNameposition(String nameposition) {
+        this.nameposition = nameposition;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getUnits() {
+        return units;
+    }
+
+    public void setUnits(String units) {
+        this.units = units;
+    }
+
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
+    }
+
     @Override
     public String toString() {
         return "Position{" +
