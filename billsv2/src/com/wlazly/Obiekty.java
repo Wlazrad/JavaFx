@@ -1,13 +1,14 @@
 package com.wlazly;
 
 public class Obiekty {
-   public String nazwa;
+    public String nazwa;
     public String data;
-     public String nip;
-    public   Obiekty(String nazwa, String data, String nip){
-        this.nazwa=nazwa;
-        this.data=data;
-        this.nip=nip;
+    public String nip;
+
+    public Obiekty(String nazwa, String data, String nip) {
+        this.nazwa = nazwa;
+        this.data = data;
+        this.nip = nip;
 
     }
 
@@ -37,6 +38,8 @@ public class Obiekty {
 
     @Override
     public String toString() {
-        return String.valueOf(getNazwa()+","+getData()+","+getNip());
+        return String.valueOf(getNazwa() + "," + getData() + "," + getNip());
     }
+
+
 }

@@ -10,20 +10,21 @@ public class Bill {
     String data2;
     String nip2;
 
+
     ArrayList<Position> billlist = new ArrayList<Position>();
 
     boolean close;
 
 
-    public Bill(String name1, String data1, String nip1, String name2, String data2, String nip2, boolean close,ArrayList<Position> billlist) {
-        this.name1=name1;
-        this.data1=data1;
-        this.nip1=nip1;
-        this.name2=name2;
-        this.data2=data2;
-        this.nip2=nip2;
-        this.close=close;
-        this.billlist=billlist;
+    public Bill(String name1, String data1, String nip1, String name2, String data2, String nip2, boolean close, ArrayList<Position> billlist) {
+        this.name1 = name1;
+        this.data1 = data1;
+        this.nip1 = nip1;
+        this.name2 = name2;
+        this.data2 = data2;
+        this.nip2 = nip2;
+        this.close = close;
+        this.billlist = billlist;
 
     }
 
@@ -86,16 +87,30 @@ public class Bill {
 
     @Override
     public String toString() {
-        return "Bill{" +
-                "name1='" + name1 + '\'' +
-                ", data1='" + data1 + '\'' +
-                ", nip1='" + nip1 + '\'' +
-                ", name2='" + name2 + '\'' +
-                ", data2='" + data2 + '\'' +
-                ", nip2='" + nip2 + '\'' +
-                ", close=" + close +
-                '}';
+       String openclose = "open";
+        if( isClose() == true){
+            Panel3.bclose.setEnabled(false);
+            
+            return "closetrue"+MyDate.MyDate().toString();
+
+        }
+        else
+            Panel3.bclose.setEnabled(true);
+            return "close false"+ name1 +" "+ name2;
+
+
+//        return "Bill{" +
+//                "name1='" + name1 + '\'' +
+//                ", data1='" + data1 + '\'' +
+//                ", nip1='" + nip1 + '\'' +
+//                ", name2='" + name2 + '\'' +
+//                ", data2='" + data2 + '\'' +
+//                ", nip2='" + nip2 + '\'' +
+//                ", close=" + close +
+//                '}';
+
     }
+
 }
 
 

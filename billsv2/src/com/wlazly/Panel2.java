@@ -31,41 +31,37 @@ public class Panel2 extends JPanel {
     JTextField tnip = new JTextField();
 
 
-
-
-
-    public Panel2(){
+    public Panel2() {
         setLayout(null);
         lcustomer.setText("Customer");
-        lcustomer.setBounds(50,50,100,30);
+        lcustomer.setBounds(50, 50, 100, 30);
         ldata.setText("Data");
-        ldata.setBounds(50,80,100,30);
+        ldata.setBounds(50, 80, 100, 30);
         lnip.setText("NIP");
-        lnip.setBounds(50,110,100,30);
+        lnip.setBounds(50, 110, 100, 30);
 
-        tcustomer.setBounds(200,50,100,30);
-        tdane.setBounds(200,80,100,30);
-        tnip.setBounds(200,110,100,30);
+        tcustomer.setBounds(200, 50, 100, 30);
+        tdane.setBounds(200, 80, 100, 30);
+        tnip.setBounds(200, 110, 100, 30);
 
         baddCustomer.setText("AddCustomer");
-        baddCustomer.setBounds(50,150,100,30);
+        baddCustomer.setBounds(50, 150, 100, 30);
         bdeleteCustomer.setText("DeleteCustomer");
-        bdeleteCustomer.setBounds(50,200,100,30);
+        bdeleteCustomer.setBounds(50, 200, 100, 30);
         bshowCustomer.setText("ShowCustomer");
-        bshowCustomer.setBounds(200,150,100,30);
+        bshowCustomer.setBounds(200, 150, 100, 30);
         bnewBill.setText("New Bill");
-        bnewBill.setBounds(200,200,100,30);
+        bnewBill.setBounds(200, 200, 100, 30);
         bback.setText("Back");
-        bback.setBounds(650,700,100,30);
+        bback.setBounds(650, 700, 100, 30);
 
         lpickcustomer.setText("Pick Customer");
-        lpickcustomer.setBounds(50,300,150,30);
+        lpickcustomer.setBounds(50, 300, 150, 30);
         lpicksalesman.setText("Pick Salesman");
-        lpicksalesman.setBounds(300,300,150,30);
+        lpicksalesman.setBounds(300, 300, 150, 30);
 
-        pickCustomer.setBounds(50,400,200,200);
-        pickSalesman.setBounds(400,400,200,200);
-
+        pickCustomer.setBounds(50, 400, 200, 200);
+        pickSalesman.setBounds(400, 400, 200, 200);
 
 
         add(lcustomer);
@@ -92,12 +88,12 @@ public class Panel2 extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-               DLM.addElement(new Obiekty(tcustomer.getText(),
-                       tdane.getText(),
-                       tnip.getText()));
+                DLM.addElement(new Obiekty(tcustomer.getText(),
+                        tdane.getText(),
+                        tnip.getText()));
 
-               pickCustomer.setModel(DLM);
-               pickSalesman.setModel(DLM);
+                pickCustomer.setModel(DLM);
+                pickSalesman.setModel(DLM);
 
 
             }
@@ -107,8 +103,8 @@ public class Panel2 extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-               String str = pickCustomer.getSelectedValue().toString();
-                String[] arrOfStr = str.split(",",20);
+                String str = pickCustomer.getSelectedValue().toString();
+                String[] arrOfStr = str.split(",", 20);
                 tcustomer.setText(pickCustomer.getSelectedValue().getNazwa());
                 tdane.setText(pickCustomer.getSelectedValue().getData());
                 tnip.setText(pickCustomer.getSelectedValue().getNip());
@@ -131,11 +127,11 @@ public class Panel2 extends JPanel {
         bnewBill.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Position> menager= new ArrayList<>();
+                ArrayList<Position> menager = new ArrayList<>();
 
-                DLM1.addElement(new Bill(pickCustomer.getSelectedValue().getNazwa(),pickCustomer.getSelectedValue()
-                .getData(), pickCustomer.getSelectedValue().getNip(),pickSalesman.getSelectedValue().getNazwa(),
-                        pickSalesman.getSelectedValue().getData(), pickSalesman.getSelectedValue().getNip(),false,menager));
+                DLM1.addElement(new Bill(pickCustomer.getSelectedValue().getNazwa(), pickCustomer.getSelectedValue()
+                        .getData(), pickCustomer.getSelectedValue().getNip(), pickSalesman.getSelectedValue().getNazwa(),
+                        pickSalesman.getSelectedValue().getData(), pickSalesman.getSelectedValue().getNip(), false, menager));
 
                 Panel3.tbill.setModel(DLM1);
 
@@ -146,7 +142,7 @@ public class Panel2 extends JPanel {
         bback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                card.show(container,"1");
+                card.show(container, "1");
 
             }
         });
